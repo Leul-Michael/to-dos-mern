@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../../axios";
 import {
   createTodoFail,
   createTodoStart,
@@ -18,7 +18,7 @@ import { TODO_USER } from "./TodoContext";
 export const getTodos = async (dispatch) => {
   dispatch(getTodosStart());
   try {
-    const res = await axios.get("/todos", {
+    const res = await axiosInstance.get("/todos", {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem(TODO_USER)).token
@@ -35,7 +35,7 @@ export const getTodos = async (dispatch) => {
 export const createTodo = async (todo, dispatch) => {
   dispatch(createTodoStart());
   try {
-    const res = await axios.post("/todos", todo, {
+    const res = await axiosInstance.post("/todos", todo, {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem(TODO_USER)).token
@@ -52,7 +52,7 @@ export const createTodo = async (todo, dispatch) => {
 export const updateTodo = async (todo, dispatch) => {
   dispatch(updateTodoStart());
   try {
-    const res = await axios.put(`/todos/${todo.id}`, todo, {
+    const res = await axiosInstance.put(`/todos/${todo.id}`, todo, {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem(TODO_USER)).token
@@ -69,7 +69,7 @@ export const updateTodo = async (todo, dispatch) => {
 export const deleteTodo = async (id, dispatch) => {
   dispatch(deleteTodoStart());
   try {
-    await axios.delete(`/todos/${id}`, {
+    await axiosInstance.delete(`/todos/${id}`, {
       headers: {
         Authorization: `Bearer ${
           JSON.parse(localStorage.getItem(TODO_USER)).token

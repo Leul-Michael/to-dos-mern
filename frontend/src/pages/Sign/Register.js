@@ -1,8 +1,7 @@
 import "./sign.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { axiosInstance } from "../../utils";
-import axios from "axios";
+import { axiosInstance } from "../../axios";
 import Error from "../../components/Error/Error";
 
 const Register = () => {
@@ -13,7 +12,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/users", formData);
+      await axiosInstance.post("/users", formData);
       navigate("/login");
     } catch (e) {
       setErrorResponse(e.response);
