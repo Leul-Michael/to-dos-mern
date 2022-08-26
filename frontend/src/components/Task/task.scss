@@ -1,0 +1,57 @@
+.task {
+  padding-inline: var(--padding);
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  max-height: 50px;
+  padding-block: 0.25rem;
+  transition: all 0.3s ease-out;
+  position: relative;
+
+  &.compeleted {
+    .center {
+      h1 {
+        color: var(--clr-neutral-700);
+        text-decoration: line-through;
+      }
+      p {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .left {
+    color: var(--clr-neutral-600);
+    .icon {
+      cursor: pointer;
+      &.completed {
+        color: var(--clr-accent);
+      }
+    }
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex-grow: 1;
+
+    h1 {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 0.8rem;
+      color: var(--clr-neutral-700);
+    }
+  }
+  .right {
+    color: var(--clr-neutral-600);
+    .icon {
+      cursor: pointer;
+      &.starred {
+        color: var(--clr-accent);
+      }
+    }
+  }
+}

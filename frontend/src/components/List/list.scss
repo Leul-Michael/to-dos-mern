@@ -1,0 +1,116 @@
+.list {
+    display: flex;
+    gap: 1rem;
+    padding-inline: var(--padding);
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: 0;
+    padding-block: .5rem;
+
+    &::-webkit-scrollbar {
+       width: 0;
+       height: 0;
+    }
+
+    .list-btn {
+        position: relative;
+        width: max-content;
+        color: var(--clr-neutral-900);
+        font-size: 0.8rem;
+        text-transform: capitalize;
+        white-space: nowrap;
+        user-select: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -.5rem;
+            width: 100%;
+            height: 0px;
+            border-radius: 100vw 100vw 0 0;
+        }
+
+
+        &.active {
+            color: var(--clr-accent);
+
+            &::before {
+                background-color: var(--clr-accent);
+                height: 3px;
+            }
+        }
+        &.add-new {
+            display: flex;
+            gap: .2rem;
+            align-items: center;
+
+            .icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: .7rem;
+            }
+        }
+
+        .icon {
+            display: inline-block;
+            pointer-events: none;
+        }
+    }
+}
+
+.list-operation {
+    position: absolute;
+    top: 3px;
+    right: calc(1 * var(--padding));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    display: none;
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        background: rgba(0,0,0,.25);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        color: var(--clr-neutral-900);
+        padding: 0.25rem;
+    }
+
+    ul {
+        list-style: none;
+        position: absolute;
+        top: 130%;
+        padding: 0.5rem;
+        right: 0;
+        font-size: 0.8rem;
+        background: rgba(0,0,0,.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        z-index: 5;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .3s ease-out;
+        
+
+        li {
+            cursor: pointer;
+            white-space: nowrap;
+        }        
+    }
+
+    &.active {
+        ul {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

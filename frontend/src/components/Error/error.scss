@@ -1,0 +1,33 @@
+.error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 0.75rem;
+    background: rgba(255,202,17,0.35);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding-inline: var(--padding);
+    height: max-content;
+    z-index: 10;
+    transition: all .3s ease-out;
+    transform: translateY(-100%);
+
+    &.active {
+        transform: translateY(0%);  
+    }
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p {
+        font-size: 0.9rem;
+        flex-grow: 1;
+    }
+}
